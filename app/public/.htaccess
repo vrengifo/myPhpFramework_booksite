@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+# Turn the rewrite engine on
+RewriteEngine On
+# Make all rewrites relative to this path
+RewriteBase /
+# If the request is for index.php, don't go any further [L]
+RewriteRule ^index\.php$ - [L]
+# If the request is not an existing file, go to the next rule
+RewriteCond %{REQUEST_FILENAME} !-f
+# If the request is not an existing directory, go to the next rule
+RewriteCond %{REQUEST_FILENAME} !-d
+# Pass the request to index.php and don't go any further [L]
+RewriteRule . /index.php [L]
+</IfModule>
